@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    {% extends 'base.html' %}
+
+
+    {% block title %}Home{% endblock %}
+    
+
+    {% block content %}
+    {% if user.is_authenticated %}
+     {{ user.username }} 님 으로 로그인 되었습니다.
+    <p><a href="{% url 'logout' %}">LOGOUT</a></p>
+   
+
+    
+   
+     {% else %}
+
+    <p>로그인을 해주세요</p>
+    <a href="{% url 'login' %}">LOGIN</a>
+    {% endif %}
+   
+    {% for post in list %}
+    <p>{{post.title}} - {{post.contents}} </p>
+    {% endfor %}
+    
+    {% endblock %}
+</body>
+</html>
