@@ -8,13 +8,14 @@
 </head>
 <body>
     {% extends 'base.html' %}
-
     {% block content %}
 
-    <h2>게시물 작성하기</h2>
-    <form method="POST" id="form">{% csrf_token %}
+    <h2>게시물 수정하기</h2>
+    <a href="{% url 'list' %}">목록 보기</a>
+    <a href="{% url 'remove' pk %}" class="btn btn-sm btn-primary ">삭제</a>
+    <form method="POST">{% csrf_token %}
     {{ form.as_p }}
-    <button type="submit" class="btn btn-sm btn-primary ">작성하기</button>
+    <button type="submit" class="btn btn-sm btn-primary "> 수정</button>
     </form>
     {% endblock %}
 </body>

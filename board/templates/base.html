@@ -17,21 +17,25 @@
 
 </head>
 <style>
-a {color: black; margin-left: 2em}
+a {color: black; margin-left: 2em; text-align: center;}
 </style>
 <body>
-    <div class="container">
+    <div class="container "> 
+       
         <nav class="navbar navbar-expand-sm bg-light navbar-light"> 
-            <ul class="navbar-nav">
+            <div class="collapse navbar-collapse ">    
+            <ul class="navbar-nav mr-auto ">
                 {% if user.is_authenticated %}
                 <li class="nav-item">{{ user.username }} 님 으로 로그인 되었습니다.</li>
-                <li class="nav-item"><a href="{% url 'logout' %}">LOGOUT</a></li>
+                <li class="nav-item" ><a href="{% url 'logout' %}">LOGOUT</a></li>
                 {% else %}
                 <li class="nav-item"><a href="{% url 'login' %}" class="btn btn-light btn-sm">LOGIN</a></li>
                 {% endif %}
                 <li class="nav-item"><a href="{% url 'list' %}" class="text-decoration-none text-reset">게시판 리스트</a></li>
             </ul>
+            </div>
         </nav>
+        <br>
         {% block content %}
 
         {% endblock %}

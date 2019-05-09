@@ -11,14 +11,15 @@
 
     {% block content %}
 
-        <h2>게시판 리스트</h2>
-        <table class="table">
+        <h2>게시판 리스트  <a href="{% url 'new' %}" class="btn btn-sm btn-primary ">글 쓰기</a> </h2> 
+        <table class="table table-hover table-sm">
             <thead>
                 <tr>
-                    <th scope="col">num</th>
+                    <th scope="col">번호</th>
                     <th scope="col">제목</th>
                     <th scope="col">내용</th>
                     <th scope="col">날짜</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -28,11 +29,13 @@
                     <td>{{post.title}}</td>
                     <td>{{post.contents}}</td>
                     <td>{{post.created_date|date:'Y-m-d-f'}}</td>
+                    <td><a href="{% url 'edit' post.pk %}" class="btn btn-sm btn-primary "><span>수정</span> </a></td>  
                 </tr>
+           
             </tbody>
             {% endfor %}
         </table>
-        <a href="{% url 'new' %}" class="btn btn-light">글 쓰기</a> 
+      
     {% endblock %}
 </body>
 </html>
