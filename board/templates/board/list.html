@@ -7,10 +7,32 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>게시판 리스트</h2>
-    {% for post in list %}
-        <p>{{post.title}} - {{post.contents}} </p>
-    {% endfor %}
-   
+    {% extends 'base.html' %}
+
+    {% block content %}
+
+        <h2>게시판 리스트</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">num</th>
+                    <th scope="col">제목</th>
+                    <th scope="col">내용</th>
+                    <th scope="col">날짜</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for post in list %}
+                <tr>
+                    <td>{{post.dbcon}}</td>
+                    <td>{{post.title}}</td>
+                    <td>{{post.contents}}</td>
+                    <td>{{post.created_date|date:'Y-m-d-f'}}</td>
+                </tr>
+            </tbody>
+            {% endfor %}
+        </table>
+        <a href="{% url 'new' %}" class="btn btn-light">글 쓰기</a> 
+    {% endblock %}
 </body>
 </html>

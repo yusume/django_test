@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,16 +7,15 @@
     <title>Document</title>
 </head>
 <body>
-    
     {% extends 'base.html' %}
 
-
-    {% block title %}Home{% endblock %}
-    
-
     {% block content %}
-    
-    
+
+    <h2>게시물 작성하기</h2>
+    <form method="POST">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">작성하기</button>
+    </form>
     {% endblock %}
 </body>
 </html>
