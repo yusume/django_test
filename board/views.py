@@ -4,7 +4,8 @@ from .forms import boardForm
 # Create your views here.
 
 def list(request):
-   return render(request,'board/list.html', {'list' : board.objects.all()})
+   print(request.user)
+   return render(request,'board/list.html', {'listsss' : board.objects.all()})
 
 def new(request):
    if request.method == "POST":
@@ -13,12 +14,15 @@ def new(request):
          board = form.save(commit=False)
          board.save()
          return redirect('list')
+      else:
+         return redirect('list')
    else:
       form = boardForm()
 
    return render(request,'board/new.html', {'form' : form})  
 
 def edit(request, pk):
+   # board.objects.get = get_object_or_404(board, pk=pk)  
    edit_board = get_object_or_404(board, pk=pk)
    if request.method == "POST":
       form = boardForm(request.POST, instance=edit_board)
